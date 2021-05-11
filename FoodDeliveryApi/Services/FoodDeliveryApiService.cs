@@ -17,6 +17,10 @@ namespace FoodDeliveryApi
         {
             this.db = context;
         }
-        
+
+        internal IEnumerable<Restaurant> GetAllRestrans()
+        {
+            return db.Restaurants;
+        }
     }
 }

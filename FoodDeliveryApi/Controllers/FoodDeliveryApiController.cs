@@ -16,10 +16,10 @@ namespace FoodDeliveryApi.Controllers
             this.service = service;
         }
 
-        [HttpPost("restaurants")]
-        public ActionResult<Restaurant> PostRestaurant(Restaurant model)
+        [HttpGet ("restaurants")]
+        public ActionResult<IEnumerable<Restaurant>> GetRestaurant()
         {
-            return null;
+            return Ok(service.GetAllRestrans());
         }
         
     }
