@@ -38,6 +38,7 @@ namespace FoodDeliveryApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodDeliveryApi", Version = "v1" });
             });
+            services.AddScoped<FoodDeliveryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +50,12 @@ namespace FoodDeliveryApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodDeliveryApi v1"));
             }
+            else 
+            {
+                app.UseHttpsRedirection();
+            }
 
-            app.UseHttpsRedirection();
+            
 
             app.UseRouting();
 

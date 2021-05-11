@@ -7,8 +7,11 @@ using FoodDeliveryApi.Models;
 
 namespace FoodDeliveryApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FoodDeliveryController : Controller
     {
+        
         private FoodDeliveryService service;
 
         public FoodDeliveryController(FoodDeliveryService service)
