@@ -22,5 +22,10 @@ namespace FoodDeliveryApi
         {
             return db.Restaurants;
         }
+
+        internal IEnumerable<Dish> MenuOfRaestraunt(int id)
+        {
+           return db.Dishes.Where(d => d.RestaurantId == id).Include(d => d.Type);
+        }
     }
 }

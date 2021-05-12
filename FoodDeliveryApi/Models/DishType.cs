@@ -7,6 +7,7 @@ namespace FoodDeliveryApi.Models
     public class DishType
     {
         public int ID { get; set; }
-        public int Title { get; set; }
+        public string Title { get; set; }
+
     }
 }
