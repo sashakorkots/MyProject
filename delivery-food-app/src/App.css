@@ -6,6 +6,7 @@
 .App {
   width: 640px;
   margin: auto;
+  
 }
 #restaurants {
   display: flex;
@@ -13,13 +14,21 @@
   justify-content: space-between;
 }
 .restaurant {
-
+  color: black;
   width: 195px;
   padding: 5px;
   margin: 2px;
   border: solid 2px black;
   border-radius: 5px;
   text-align: center;
+}
+a {
+  text-decoration: none;
+}
+.restaurant:hover {
+  border: solid 2px rgb(255, 145, 0);
+  color: rgb(255, 145, 0);
+  cursor: pointer;
 }
 .restaurant>* {
   display: block;
