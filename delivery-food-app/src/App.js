@@ -34,17 +34,3 @@ function App() {
 
 export default App;
 
-
-/* 
-<BrowserRouter>
-        <TodoListSidebar />
-        <div className="tasks">
-          <Route path="/today">
-            <TodayTasks />
-          </Route>
-            <Route path={`/todo-list/:id`} > 
-              <ListTasks />
-            </Route>
-        </div>
-      </BrowserRouter>
-*/
