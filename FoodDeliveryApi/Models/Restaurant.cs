@@ -11,5 +11,6 @@ namespace FoodDeliveryApi.Models
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string OpeningTime { get; set; }
+        public List<Dish> Dishes { get; set; }
     }
 }

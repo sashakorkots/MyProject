@@ -12,5 +12,7 @@ namespace FoodDeliveryApi.Models
         public DishType Type { get; set; }
         public TimeSpan CookingTime { get; set; }
         public decimal Price { get; set; }
+        public int RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
     }
 }
