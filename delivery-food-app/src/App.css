@@ -21,6 +21,11 @@
   border-radius: 5px;
   text-align: center;
 }
+.restaurant:hover {
+  border: solid 2px rgb(255, 145, 0);
+  color: rgb(255, 145, 0);
+  cursor: pointer;
+}
 .restaurant>* {
   display: block;
 }
