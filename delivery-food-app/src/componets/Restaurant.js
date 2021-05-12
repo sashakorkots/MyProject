@@ -5,6 +5,7 @@ function Restaurant({restaurant}) {
         <div className='restaurant'>
             <h3>{restaurant.title}</h3>
             <span>{restaurant.address}</span>
+            <span>{restaurant.openingTime}</span>
         </div>
     )
 }

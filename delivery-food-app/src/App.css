@@ -10,12 +10,17 @@
 #restaurants {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .restaurant {
+
   width: 195px;
   padding: 5px;
   margin: 2px;
   border: solid 2px black;
   border-radius: 5px;
   text-align: center;
+}
+.restaurant>* {
+  display: block;
 }
