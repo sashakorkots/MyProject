@@ -26,7 +26,7 @@ namespace FoodDeliveryApi.Controllers
         }
 
         [HttpGet ("restaurant/{id}/menu")]
-        public ActionResult<IEnumerable<DishType>> GetRestaurantMenu(int id)
+        public ActionResult<IEnumerable<MenuDTO>> GetRestaurantMenu(int id)
         {
             return Ok(service.MenuOfRaestraunt(id));
         }
