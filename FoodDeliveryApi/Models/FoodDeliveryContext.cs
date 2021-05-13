@@ -7,5 +7,7 @@ namespace  FoodDeliveryApi.Models {
         public FoodDeliveryContext(DbContextOptions<FoodDeliveryContext> options) : base (options) { }
 
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
+        public DbSet<DishType> DishTypes { get; set; }
     }
 }

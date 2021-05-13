@@ -35,14 +35,13 @@ namespace FoodDeliveryApi
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                     .UseSnakeCaseNamingConvention()
             );
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodDeliveryApi", Version = "v1" });
-            });
-
+            services.AddControllers();            
             services.AddScoped<FoodDeliveryService>();
 
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddCors(options =>
             {
                 options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -52,6 +51,10 @@ namespace FoodDeliveryApi
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();
                 });
+            });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "FoodDeliveryApi", Version = "v1" });
             });
 
         }

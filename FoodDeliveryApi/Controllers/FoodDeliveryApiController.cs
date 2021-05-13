@@ -20,9 +20,15 @@ namespace FoodDeliveryApi.Controllers
         }
 
         [HttpGet ("restaurants")]
-        public ActionResult<IEnumerable<Restaurant>> GetRestaurant()
+        public ActionResult<IEnumerable<Restaurant>> GetRestaurants()
         {
             return Ok(service.GetAllRestrans());
+        }
+
+        [HttpGet ("restaurant/{id}/menu")]
+        public ActionResult<RestaurantInfoDTO> GetRestaurantMenu(int id)
+        {
+            return Ok(service.MenuOfRaestraunt(id));
         }
         
     }

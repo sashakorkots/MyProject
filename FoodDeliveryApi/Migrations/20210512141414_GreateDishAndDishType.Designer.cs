@@ -3,15 +3,17 @@ using System;
 using FoodDeliveryApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FoodDeliveryApi.Migrations
 {
     [DbContext(typeof(FoodDeliveryContext))]
-    partial class FoodDeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20210512141414_GreateDishAndDishType")]
+    partial class GreateDishAndDishType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,19 +69,12 @@ namespace FoodDeliveryApi.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("RestaurantId")
+                    b.Property<int>("Title")
                         .HasColumnType("integer")
-                        .HasColumnName("restaurant_id");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text")
                         .HasColumnName("title");
 
                     b.HasKey("ID")
                         .HasName("pk_dish_types");
-
-                    b.HasIndex("RestaurantId")
-                        .HasDatabaseName("ix_dish_types_restaurant_id");
 
                     b.ToTable("dish_types");
                 });
@@ -124,7 +119,7 @@ namespace FoodDeliveryApi.Migrations
                         .IsRequired();
 
                     b.HasOne("FoodDeliveryApi.Models.DishType", "Type")
-                        .WithMany("Dishes")
+                        .WithMany()
                         .HasForeignKey("TypeId")
                         .HasConstraintName("fk_dishes_dish_types_type_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -135,28 +130,9 @@ namespace FoodDeliveryApi.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("FoodDeliveryApi.Models.DishType", b =>
-                {
-                    b.HasOne("FoodDeliveryApi.Models.Restaurant", "Restaurant")
-                        .WithMany("DishTypes")
-                        .HasForeignKey("RestaurantId")
-                        .HasConstraintName("fk_dish_types_restaurants_restaurant_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Restaurant");
-                });
-
-            modelBuilder.Entity("FoodDeliveryApi.Models.DishType", b =>
-                {
-                    b.Navigation("Dishes");
-                });
-
             modelBuilder.Entity("FoodDeliveryApi.Models.Restaurant", b =>
                 {
                     b.Navigation("Dishes");
-
-                    b.Navigation("DishTypes");
                 });
 #pragma warning restore 612, 618
         }
