@@ -33,3 +33,15 @@ a {
 .restaurant>* {
   display: block;
 }
+.dish-type-section {
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 5px;
+}
+.dish>h4 {
+  text-align: center;
+  border-bottom: solid 2px black;
+}
+.menu {
+  margin-bottom: 20px;
+}
