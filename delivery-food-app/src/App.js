@@ -4,6 +4,7 @@ import { loadRestaurant } from './store/restaurant/actions';
 import {useDispatch} from 'react-redux';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import RestaurantsList from './componets/RestaurantsList';
+import Menu from './componets/Menu'
 
 
 
@@ -24,6 +25,7 @@ function App() {
           </Route>
           <Route path='/restaurant/:id' > 
             <h2>Restaurant menu</h2>
+            <Menu />
             <Link to={`/home`} className='link-back'><button>Повернутися до вибору ресторану</button></Link>
           </Route>
         </Switch>
