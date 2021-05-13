@@ -23,9 +23,14 @@ namespace FoodDeliveryApi
             return db.Restaurants;
         }
 
-        internal IEnumerable<MenuDTO> MenuOfRaestraunt(int id)
+        internal RestaurantInfoDTO MenuOfRaestraunt(int id)
         {
-           return db.DishTypes.Where(t => t.RestaurantId == id).Include(t => t.Dishes).Select(ToMenuDTO);
+            RestaurantInfoDTO restaurantInfoDTO = new RestaurantInfoDTO();
+            restaurantInfoDTO.Id = id;
+            restaurantInfoDTO.Title = db.Restaurants.Where(r => r.Id == id).Single().Title;
+            restaurantInfoDTO.Menu = db.DishTypes.Where(t => t.RestaurantId == id).Include(t => t.Dishes).Select(ToMenuDTO);
+
+           return restaurantInfoDTO;
         }
 
         private MenuDTO ToMenuDTO(DishType dishTypesWithDishes)
