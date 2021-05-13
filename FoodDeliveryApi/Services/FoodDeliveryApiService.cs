@@ -7,13 +7,13 @@ using FoodDeliveryApi.Models;
 
 namespace FoodDeliveryApi
 {
-    public class FoodDeliveryService
+    public class RestaurantsService
     {
 
         FoodDeliveryContext db;
 
 
-        public FoodDeliveryService(FoodDeliveryContext context)
+        public RestaurantsService(FoodDeliveryContext context)
         {
             this.db = context;
         }
