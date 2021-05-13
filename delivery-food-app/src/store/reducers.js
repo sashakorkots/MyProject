@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import restaurantsReducer from './restaurant/reducers'
-import menuReducer from './menu/reducers'
+import currentRestrantInfoReducer from './currentRestrantInfo/reducers'
 
 export default combineReducers({
     restaurants : restaurantsReducer,
-    menu : menuReducer
+    currentRestrantInfo : currentRestrantInfoReducer
 })

@@ -1,26 +1,29 @@
 import React, { useEffect } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {loadMenu} from '../store/menu/action';
+import {loadCurrentRestrantInfo} from '../store/currentRestrantInfo/action';
 import Dish from './Dish'
 
 function Menu() {
     let {id} = useParams()
+    let restrantInfo = useSelector(state => state.currentRestrantInfo)
+
     const dispatch = useDispatch()    
-    let menu = useSelector(state => state.menu)
+    
 
     useEffect(() => {
-        dispatch(loadMenu(id))
-    },[id])
+        dispatch(loadCurrentRestrantInfo(id))
+    },[id,dispatch])
 
     return (
         <div className='menu'>
+            <h2>{restrantInfo.title}</h2>
             {
-                menu.map(type => 
-                    <div className='dish-type-section'>
+                restrantInfo.menu.map((type, i) => 
+                    <div className='dish-type-section' key={i}>
                         <h3>{type.title}</h3>
                         <section className='dish-section'>
-                            {type.dishes.map(d => <Dish dish={d} />)}
+                            {type.dishes.map(d => <Dish key={d.id} dish={d} />)}
                         </section>
                     </div>  
                 )              
