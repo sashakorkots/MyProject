@@ -17,9 +17,9 @@ function Menu() {
         <div className='menu'>
             {
                 menu.map(type => 
-                    <div>
+                    <div className='dish-type-section'>
                         <h3>{type.title}</h3>
-                        <section className='dish-type-section'>
+                        <section className='dish-section'>
                             {type.dishes.map(d => <Dish dish={d} />)}
                         </section>
                     </div>  

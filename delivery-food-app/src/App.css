@@ -34,14 +34,32 @@ a {
   display: block;
 }
 .dish-type-section {
+
+  padding: 5px;
+  margin-bottom: 5px;;
+}
+.dish-type-section>h3 {
+  font-size: 26px;
+}
+.dish {
   border: solid 2px black;
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
+  width: 30%;
 }
 .dish>h4 {
-  text-align: center;
+  font-style: italic;
+  font-weight: normal;
+  padding: 5px;
+  margin: 0px;
   border-bottom: solid 2px black;
 }
 .menu {
   margin-bottom: 20px;
+}
+
+.dish-section {
+  display: flex;
+  flex-wrap: wrap;
 }
