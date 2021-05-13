@@ -30,7 +30,6 @@ namespace FoodDeliveryApi.Controllers
         {
             return Ok(service.MenuOfRaestraunt(id));
         }
-        
     }
 }
 
