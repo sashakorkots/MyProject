@@ -38,6 +38,7 @@ namespace FoodDeliveryApi
         private MenuDishDTO ToMenuDishDTO(Dish dishesFromMenu)
         {
             MenuDishDTO dish = new MenuDishDTO();
+            dish.ID = dishesFromMenu.ID;
             dish.Title = dishesFromMenu.Title;
             dish.CookingTime = dishesFromMenu.CookingTime;
             dish.Price = dishesFromMenu.Price;
