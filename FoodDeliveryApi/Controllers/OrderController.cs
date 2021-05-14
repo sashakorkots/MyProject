@@ -18,9 +18,9 @@ namespace FoodDeliveryApi.Controllers
             this.service = service;
         }
         [HttpPost("")]
-        public ActionResult<OrderDish> PostOrderDish (OrderDish model)
+        public ActionResult<Order> PostOrderDish (Order model)
         {
-            return null;
+            return Ok(service.CreateOrder(model));
         }
         
     }

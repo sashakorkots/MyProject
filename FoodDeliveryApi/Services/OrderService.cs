@@ -18,9 +18,10 @@ namespace FoodDeliveryApi
             this.db = context;
         }
 
-        internal IEnumerable<Restaurant> GetAllRestrans()
+        internal Order CreateOrder(Order model)
         {
-            return db.Restaurants;
+            db.Orders.Add(model);
+            return model;
         }
     }
 }
