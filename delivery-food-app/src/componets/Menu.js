@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {loadCurrentRestrantInfo} from '../store/currentRestrantInfo/action';
+import {newOrder} from '../store/order/action'
+
 import Dish from './Dish'
 
 function Menu() {
@@ -9,10 +11,10 @@ function Menu() {
     let restrantInfo = useSelector(state => state.currentRestrantInfo)
 
     const dispatch = useDispatch()    
-    
 
     useEffect(() => {
         dispatch(loadCurrentRestrantInfo(id))
+        dispatch(newOrder(id, "address"))
     },[id,dispatch])
 
     return (

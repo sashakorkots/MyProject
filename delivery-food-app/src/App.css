@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .App {
-  width: 640px;
+  width: 900px;
   margin: auto;
   
 }
@@ -65,4 +65,15 @@ h2 {
 .dish-section {
   display: flex;
   flex-wrap: wrap;
+}
+.make-order {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.make-order>.basket-list {
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
 }
