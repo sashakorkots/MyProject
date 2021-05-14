@@ -11,7 +11,7 @@ function Dish({dish}) {
     }
 
     return (
-        <div onClick={AddToOrder} className='dish'>
+        <div onClick={AddToOrder} className='dish border' >
             <h4>{dish.title}</h4>
             <p>{dish.cookingTime} хв. </p>
             <p>{dish.price} грн.</p>

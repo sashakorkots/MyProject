@@ -5,6 +5,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const orderSlice = createSlice({
         name: "order",
         initialState: {
+            restaurantId : 0,
             date : '',
             deliveryAddress : 0,
             deliveryTime : 0, 
@@ -15,9 +16,10 @@ const orderSlice = createSlice({
             createOrder(state, action) {
                 state.date = new Date().toDateString()
                 state.deliveryAddress = action.payload.deliveryAddress
-                state.RestaurantId = action.payload.RestaurantId
+                state.restaurantId = action.payload.RestaurantId
             },
             addDish(state, action) {
+                state.totalPrice += action.payload.price
                 const orderdish = state.dishes.find(d => d.id == action.payload.id)
                 orderdish === undefined ? state.dishes
                     .push(
@@ -29,6 +31,7 @@ const orderSlice = createSlice({
             },
             deleteOrder(state) {
                 state.dishes = []
+                state.totalPrice = 0
             }
         }
     }

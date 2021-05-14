@@ -13,13 +13,17 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.restaurant {
-  color: black;
-  width: 195px;
+.border {
   padding: 5px;
   margin: 2px;
   border: solid 2px black;
   border-radius: 5px;
+}
+
+.restaurant {
+  color: black;
+  width: 195px;
+
   text-align: center;
 }
 a {
@@ -42,11 +46,12 @@ a {
   font-size: 26px;
 }
 .dish {
-  border: solid 2px black;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
   width: 30%;
+}
+.dish:hover {
+  border: solid 2px rgb(255, 145, 0);
+  color: rgb(255, 145, 0);
+  cursor: pointer;
 }
 .dish>h4 {
   font-style: italic;
@@ -57,6 +62,7 @@ a {
 }
 .menu {
   margin-bottom: 20px;
+  flex: 1;
 }
 h2 {
   font-size: 40px;
@@ -71,9 +77,11 @@ h2 {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .make-order>.basket-list {
-  border: solid 2px black;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
+  width: 25%;
+}
+
+.counter {
+  float: right;
 }
