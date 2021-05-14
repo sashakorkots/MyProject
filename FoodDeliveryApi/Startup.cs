@@ -37,7 +37,7 @@ namespace FoodDeliveryApi
             );
             services.AddControllers();            
             services.AddScoped<RestaurantsService>();
-
+            services.AddScoped<OrderService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

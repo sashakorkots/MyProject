@@ -11,6 +11,8 @@ namespace FoodDeliveryApi.Models
         public string DeliveryAddress { get; set; }
         public TimeSpan DeliveryTime { get; set; }
         public decimal TotalPrice { get; set; }
+        public int RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
         public int CourierId { get; set; }
         public Courier Courier { get; set; }
         public List<OrderDish> OrderDishes { get; set; }
