@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import RestaurantsList from './componets/RestaurantsList';
 import Menu from './componets/Menu'
-import Backet from './componets/Basket'
+import Backet from './componets/BasketList'
 import {deleteOrder} from './store/order/orderSlice'
 
 
