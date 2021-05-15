@@ -1,1 +1,1 @@
-export const url = 'http://localhost:5000/api/FoodDelivery/';
+export const url = 'http://localhost:5000/api/Restaurants/';

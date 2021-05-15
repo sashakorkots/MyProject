@@ -3,15 +3,17 @@ using System;
 using FoodDeliveryApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FoodDeliveryApi.Migrations
 {
     [DbContext(typeof(FoodDeliveryContext))]
-    partial class FoodDeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20210514070853_CreateCourierAndOrderAndOrderDish")]
+    partial class CreateCourierAndOrderAndOrderDish
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,10 +143,6 @@ namespace FoodDeliveryApi.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("order_date");
 
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("integer")
-                        .HasColumnName("restaurant_id");
-
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("numeric")
                         .HasColumnName("total_price");
@@ -154,9 +152,6 @@ namespace FoodDeliveryApi.Migrations
 
                     b.HasIndex("CourierId")
                         .HasDatabaseName("ix_orders_courier_id");
-
-                    b.HasIndex("RestaurantId")
-                        .HasDatabaseName("ix_orders_restaurant_id");
 
                     b.ToTable("orders");
                 });
@@ -277,16 +272,7 @@ namespace FoodDeliveryApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FoodDeliveryApi.Models.Restaurant", "Restaurant")
-                        .WithMany()
-                        .HasForeignKey("RestaurantId")
-                        .HasConstraintName("fk_orders_restaurants_restaurant_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Courier");
-
-                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("FoodDeliveryApi.Models.OrderDish", b =>

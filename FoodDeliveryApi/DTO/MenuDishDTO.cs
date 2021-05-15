@@ -10,5 +10,6 @@ namespace FoodDeliveryApi.Models
         public string Title { get; set; }
         public double CookingTime { get; set; }
         public decimal Price { get; set; }
+        public int RestaurantId { get; set; }
     }
 }

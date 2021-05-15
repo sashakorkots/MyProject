@@ -9,28 +9,27 @@ namespace FoodDeliveryApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FoodDeliveryController : Controller
+    public class RestaurantsController : Controller
     {
         
-        private FoodDeliveryService service;
+        private RestaurantsService service;
 
-        public FoodDeliveryController(FoodDeliveryService service)
+        public RestaurantsController(RestaurantsService service)
         {
             this.service = service;
         }
 
-        [HttpGet ("restaurants")]
+        [HttpGet ("")]
         public ActionResult<IEnumerable<Restaurant>> GetRestaurants()
         {
             return Ok(service.GetAllRestrans());
         }
 
-        [HttpGet ("restaurant/{id}/menu")]
+        [HttpGet ("{id}/menu")]
         public ActionResult<RestaurantInfoDTO> GetRestaurantMenu(int id)
         {
             return Ok(service.MenuOfRaestraunt(id));
         }
-        
     }
 }
 

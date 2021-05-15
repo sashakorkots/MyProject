@@ -36,8 +36,8 @@ namespace FoodDeliveryApi
                     .UseSnakeCaseNamingConvention()
             );
             services.AddControllers();            
-            services.AddScoped<FoodDeliveryService>();
-
+            services.AddScoped<RestaurantsService>();
+            services.AddScoped<OrderService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

@@ -5,7 +5,8 @@ import {useDispatch} from 'react-redux';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import RestaurantsList from './componets/RestaurantsList';
 import Menu from './componets/Menu'
-
+import Backet from './componets/BasketList'
+import {deleteOrder} from './store/order/orderSlice'
 
 
 function App() {
@@ -23,8 +24,11 @@ function App() {
             <h2>Restaurants</h2>
             <RestaurantsList />
           </Route>
-          <Route path='/restaurant/:id' > 
-            <Menu />
+          <Route path='/restaurant/:id' >
+            <div className='make-order'> 
+              <Menu />
+              <Backet />
+            </div>
             <Link to={`/home`} className='link-back'><button>Повернутися до вибору ресторану</button></Link>
           </Route>
         </Switch>

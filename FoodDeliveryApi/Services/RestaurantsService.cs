@@ -7,13 +7,13 @@ using FoodDeliveryApi.Models;
 
 namespace FoodDeliveryApi
 {
-    public class FoodDeliveryService
+    public class RestaurantsService
     {
 
         FoodDeliveryContext db;
 
 
-        public FoodDeliveryService(FoodDeliveryContext context)
+        public RestaurantsService(FoodDeliveryContext context)
         {
             this.db = context;
         }
@@ -44,6 +44,7 @@ namespace FoodDeliveryApi
         {
             MenuDishDTO dish = new MenuDishDTO();
             dish.ID = dishesFromMenu.ID;
+            dish.RestaurantId = dishesFromMenu.RestaurantId;
             dish.Title = dishesFromMenu.Title;
             dish.CookingTime = dishesFromMenu.CookingTime.TotalMinutes;
             dish.Price = dishesFromMenu.Price;
