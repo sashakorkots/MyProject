@@ -44,6 +44,7 @@ namespace FoodDeliveryApi
         {
             MenuDishDTO dish = new MenuDishDTO();
             dish.ID = dishesFromMenu.ID;
+            dish.RestaurantId = dishesFromMenu.RestaurantId;
             dish.Title = dishesFromMenu.Title;
             dish.CookingTime = dishesFromMenu.CookingTime.TotalMinutes;
             dish.Price = dishesFromMenu.Price;
