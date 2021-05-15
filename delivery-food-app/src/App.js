@@ -16,10 +16,6 @@ function App() {
     dispatch(loadRestaurant())
   },[dispatch])
 
-  const onBack = () => {
-    dispatch(deleteOrder())
-  }
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,7 +29,7 @@ function App() {
               <Menu />
               <Backet />
             </div>
-            <Link to={`/home`} className='link-back'><button onClick={onBack}>Повернутися до вибору ресторану</button></Link>
+            <Link to={`/home`} className='link-back'><button>Повернутися до вибору ресторану</button></Link>
           </Route>
         </Switch>
       </BrowserRouter>

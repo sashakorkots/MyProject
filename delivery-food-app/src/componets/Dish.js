@@ -1,13 +1,14 @@
 import React from "react"; 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import {addnewDish} from '../store/order/action'
 
 function Dish({dish}) {
-    
+    const order = useSelector(state => state.currentOrder)
     const dispatch = useDispatch();
 
     const AddToOrder = () => {
-        dispatch(addnewDish(dish))
+        dispatch(addnewDish(dish, order.restaurantId))
     }
 
     return (

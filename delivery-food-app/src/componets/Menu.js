@@ -14,7 +14,6 @@ function Menu() {
 
     useEffect(() => {
         dispatch(loadCurrentRestrantInfo(id))
-        dispatch(newOrder(id, "address"))
     },[id,dispatch])
 
     return (

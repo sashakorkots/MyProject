@@ -14,9 +14,13 @@ const orderSlice = createSlice({
         },
         reducers: {
             createOrder(state, action) {
+                state.restaurantId = action.payload.restaurantId
                 state.date = new Date().toDateString()
-                state.deliveryAddress = action.payload.deliveryAddress
-                state.restaurantId = action.payload.RestaurantId
+                state.deliveryAddress = 0
+                state.deliveryTime = 0 
+                state.totalPrice = 0
+                state.dishes = []                                
+                
             },
             addDish(state, action) {
                 state.totalPrice += action.payload.price
