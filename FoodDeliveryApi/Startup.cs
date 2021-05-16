@@ -35,9 +35,11 @@ namespace FoodDeliveryApi
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                     .UseSnakeCaseNamingConvention()
             );
+
             services.AddControllers();            
             services.AddScoped<RestaurantsService>();
             services.AddScoped<OrderService>();
+            services.AddScoped<UserService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
