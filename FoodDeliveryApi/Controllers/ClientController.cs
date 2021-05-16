@@ -18,10 +18,30 @@ namespace FoodDeliveryApi.Controllers
             this.service = service;
         }
         [HttpPost("register")]
-        public ActionResult<Client> PostClient(Client model)
+        public ActionResult<Client> RegisterClient(RegisterClientDTO model)
         {
-            return Ok(new Client());
+            return Ok(service.RegisterClient(model));
         }
+        [HttpPost("login")]
+        public ActionResult<Client> LoginClient(LoginClientDTO model)
+        {
+            Client currentClient = service.FindByEmail(model.Email);
+            if (currentClient == null || !service.CheckPassword(model.Password, currentClient))
+            {
+                return BadRequest("Invalid credentials");
+            }
+            else 
+            {
+                return Ok(currentClient);
+            }
+            
+        }
+        [HttpGet("")]
+        public ActionResult<IEnumerable<Client>> GetClient()
+        {
+            return service.GetAllClients();
+        }
+        
         
         
     }

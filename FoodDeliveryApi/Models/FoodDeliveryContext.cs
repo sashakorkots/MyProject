@@ -12,5 +12,6 @@ namespace  FoodDeliveryApi.Models {
         public DbSet<Courier> Couriers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDish> OrderDishes { get; set; }
+        public DbSet<Client> Clients { get; set; }
     }
 }
