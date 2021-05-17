@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FoodDeliveryApi.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FoodDeliveryApi.Controllers
 {
@@ -12,10 +13,12 @@ namespace FoodDeliveryApi.Controllers
     public class ClientController : ControllerBase
     {
         private UserService service;
+        private JwtService jwtService;
 
-        public ClientController(UserService service)
+        public ClientController(UserService userService, JwtService jwtService)
         {
-            this.service = service;
+            this.service = userService;
+            this.jwtService = jwtService;
         }
         [HttpPost("register")]
         public ActionResult<Client> RegisterClient(RegisterClientDTO model)
@@ -23,7 +26,7 @@ namespace FoodDeliveryApi.Controllers
             return Ok(service.RegisterClient(model));
         }
         [HttpPost("login")]
-        public ActionResult<Client> LoginClient(LoginClientDTO model)
+        public ActionResult<string> LoginClient(LoginClientDTO model)
         {
             Client currentClient = service.FindByEmail(model.Email);
             if (currentClient == null || !service.CheckPassword(model.Password, currentClient))
@@ -32,7 +35,8 @@ namespace FoodDeliveryApi.Controllers
             }
             else 
             {
-                return Ok(currentClient);
+                Response.Cookies.Append("jwt", jwtService.Generate(currentClient.Id), new CookieOptions{HttpOnly = true});
+                return Ok("success");
             }
             
         }
