@@ -24,6 +24,7 @@ function App() {
           <Route path="/register">
             <h2>Register</h2>
             <Register />
+            <h2>Login</h2>
             <Login />
           </Route>
           <Route path="/home">

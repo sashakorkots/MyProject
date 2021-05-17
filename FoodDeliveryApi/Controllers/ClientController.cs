@@ -26,10 +26,10 @@ namespace FoodDeliveryApi.Controllers
         {
             Client newClient = service.RegisterClient(model);
             Response.Cookies.Append("jwt", jwtService.Generate(newClient.Id), new CookieOptions{HttpOnly = true});
-            return Ok(newClient);
+            return Ok("success");
         }
         [HttpPost("login")]
-        public ActionResult<Client> LoginClient(LoginClientDTO model)
+        public ActionResult<string> LoginClient(LoginClientDTO model)
         {
             Client currentClient = service.FindByEmail(model.Email);
             if (currentClient == null || !service.CheckPassword(model.Password, currentClient))
@@ -39,19 +39,19 @@ namespace FoodDeliveryApi.Controllers
             else 
             {
                 Response.Cookies.Append("jwt", jwtService.Generate(currentClient.Id), new CookieOptions{HttpOnly = true});
-                return Ok(currentClient);
+                return Ok("success");
             }
             
         }
         [HttpGet("")]
-        public ActionResult<Client> GetUser()
+        public ActionResult<string> GetUser()
         {
             try
             {
                 string jwt = Request.Cookies["jwt"];
                 JwtSecurityToken token = jwtService.Verify(jwt);
                 Client currentClient = service.GetById(Convert.ToInt32(token.Issuer));
-                return Ok(currentClient);
+                return Ok("success");
             }
             catch (System.Exception)
             {

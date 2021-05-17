@@ -11,20 +11,10 @@ const clientSlice = createSlice({
         },
         reducers: {
             RegisterClient(state, action) {
-                const {id, name, surname, email, order} = action.payload
-                state.id = id
-                state.name = name
-                state.surname = surname
-                state.email = email
-                state.order = order
+
             },
             LoginClient(state, action) {
-                const {id, name, surname, email, order} = action.payload
-                state.id = id
-                state.name = name
-                state.surname = surname
-                state.email = email
-                state.order = order
+
             }
         }
 })
