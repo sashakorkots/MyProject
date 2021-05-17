@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CreateClient } from '../store/client/action'
+import { LoadClient } from '../store/client/action'
 
 function useForm(...fields) {
     return {
@@ -22,32 +22,28 @@ function useField(name, type) {
     }
 }
 
-function Register() {
-    const fieldName = useField('name','text')
-    const fieldSurname = useField('surname','text')
+function Login() {
     const fieldEmail = useField('email','text')
     const fieldPassword = useField('password','password')    
 
-    const fields = useForm(fieldName, fieldSurname, fieldEmail, fieldPassword)
+    const fields = useForm(fieldEmail, fieldPassword)
 
     const dispatch = useDispatch()
 
     const onSubmitHandler = (event) => {
         event.preventDefault()
-        dispatch(CreateClient(fields.buildObject()))
+        dispatch(LoadClient(fields.buildObject()))
     }
 
     return (
-        <form id='register' className='border' onSubmit={onSubmitHandler}>
+        <form id='login' className='border' onSubmit={onSubmitHandler}>
             <p>
-                <input {...fieldName} />
-                <input {...fieldSurname} />
                 <input {...fieldEmail} />
                 <input {...fieldPassword} />
             </p>
-            <button type='submit'>register</button>
+            <button type='submit'>login</button>
         </form>
     )
 }
 
-export default Register
+export default Login
