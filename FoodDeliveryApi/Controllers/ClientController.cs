@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FoodDeliveryApi.Models;
 using Microsoft.AspNetCore.Http;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FoodDeliveryApi.Controllers
 {
-    [Route("api/[controller]/client")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ClientController : ControllerBase
     {
@@ -21,9 +22,11 @@ namespace FoodDeliveryApi.Controllers
             this.jwtService = jwtService;
         }
         [HttpPost("register")]
-        public ActionResult<Client> RegisterClient(RegisterClientDTO model)
+        public ActionResult<string> RegisterClient(RegisterClientDTO model)
         {
-            return Ok(service.RegisterClient(model));
+            Client newClient = service.RegisterClient(model);
+            Response.Cookies.Append("jwt", jwtService.Generate(newClient.Id), new CookieOptions{HttpOnly = true});
+            return Ok("success");
         }
         [HttpPost("login")]
         public ActionResult<string> LoginClient(LoginClientDTO model)
@@ -41,9 +44,28 @@ namespace FoodDeliveryApi.Controllers
             
         }
         [HttpGet("")]
-        public ActionResult<IEnumerable<Client>> GetClient()
+        public ActionResult<Client> GetUser()
         {
-            return service.GetAllClients();
+            try
+            {
+                string jwt = Request.Cookies["jwt"];
+                JwtSecurityToken token = jwtService.Verify(jwt);
+                Client currentClient = service.GetById(Convert.ToInt32(token.Issuer));
+                return Ok(currentClient);
+            }
+            catch (System.Exception)
+            {
+                
+                return Unauthorized();
+            }
+            
+        }
+        
+        [HttpPost("logout")]
+        public ActionResult<string> GetClient()
+        {
+            Response.Cookies.Delete("jwt");
+            return Ok("success");
         }
         
         

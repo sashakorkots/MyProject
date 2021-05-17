@@ -42,5 +42,10 @@ namespace FoodDeliveryApi
         {
             return db.Clients;
         }
+
+        internal Client GetById(int id)
+        {
+            return db.Clients.Where(c => c.Id == id).Single();
+        }
     }
 }
