@@ -8,6 +8,7 @@ import Menu from './componets/Menu'
 import Backet from './componets/BasketList'
 import Register from './componets/Register' 
 import Login from './componets/Login'
+import {toRegister} from './store/path/pathSlice'
 
 
 
@@ -21,13 +22,16 @@ function App() {
   return (
     <div className="App">
       
-      <BrowserRouter >                    
+      <BrowserRouter >
+          <Route path='/'>
+          <Link to={`/register`} className='link-register' onClick={_ => dispatch(toRegister())}><button>Реєстрація і логін</button></Link>
+          <h2 className='header'>Сервіс доставки їжі</h2>
+          </Route>                    
           <Route path="/register">
             <h2>Register</h2>
             <Register />
             <h2>Login</h2>
-            <Login />
-            
+            <Login />            
           </Route>
           <Route path="/home">
             <h2>Restaurants</h2>

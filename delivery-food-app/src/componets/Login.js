@@ -36,7 +36,7 @@ function Login() {
     const onSubmitHandler = (event) => {
         event.preventDefault()
         dispatch(LoadClient(fields.buildObject()))
-        dispatch(toRestaurant())
+        
     }
 
     return (

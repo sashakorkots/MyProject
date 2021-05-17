@@ -90,3 +90,14 @@ h2 {
   display: block;
   margin-bottom: 5px;
 }
+#login>p>* {
+  display: block;
+  margin-bottom: 5px;
+}
+.link-register {
+  float: right;
+  font-size: 32px;
+}
+.header {
+  border-bottom: solid 2px black  ;
+}

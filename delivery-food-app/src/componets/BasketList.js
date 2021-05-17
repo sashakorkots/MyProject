@@ -12,7 +12,7 @@ function BasketList() {
         <div className='basket-list border'>
             <h2>Basket</h2>
             {
-                basket.dishes.map(dish => <OrderDish  orderDish={dish}/> )
+                basket.dishes.map(dish => <OrderDish key={dish.Id}  orderDish={dish}/> )
             }
             <p>Total price: {basket.totalPrice} грн.</p>
         </div>
