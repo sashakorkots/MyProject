@@ -10,14 +10,16 @@ const clientSlice = createSlice({
             order : []
         },
         reducers: {
-            RegisterClient(state, action) {
-
-            },
-            LoginClient(state, action) {
-
+            Sign(state, action) {
+                const {id, name, surname, email, order} = action.payload
+                state.id = id
+                state.name = name
+                state.surname = surname
+                state.email = email
+                state.order = order
             }
         }
 })
 
 export default clientSlice.reducer
-export const {RegisterClient, LoginClient} = clientSlice.actions
+export const { Sign } = clientSlice.actions

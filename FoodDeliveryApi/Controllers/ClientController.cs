@@ -25,7 +25,6 @@ namespace FoodDeliveryApi.Controllers
         public ActionResult<string> RegisterClient(RegisterClientDTO model)
         {
             Client newClient = service.RegisterClient(model);
-            Response.Cookies.Append("jwt", jwtService.Generate(newClient.Id), new CookieOptions{HttpOnly = true});
             return Ok("success");
         }
         [HttpPost("login")]
@@ -44,14 +43,14 @@ namespace FoodDeliveryApi.Controllers
             
         }
         [HttpGet("")]
-        public ActionResult<string> GetUser()
+        public ActionResult<Client> GetUser()
         {
             try
             {
                 string jwt = Request.Cookies["jwt"];
                 JwtSecurityToken token = jwtService.Verify(jwt);
                 Client currentClient = service.GetById(Convert.ToInt32(token.Issuer));
-                return Ok("success");
+                return Ok(currentClient);
             }
             catch (System.Exception)
             {

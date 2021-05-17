@@ -1,10 +1,15 @@
-import React from "react";  
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";  
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink} from "react-router-dom";
 import Restaurant from './Restaurant'
+import {sigIn} from '../store/client/action'
 
 function RestaurantsList() {
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(sigIn())
+    },[])
     let restaurants = useSelector(st => st.restaurants);
 
     return (
