@@ -26,7 +26,7 @@ namespace FoodDeliveryApi.Controllers
         {
             Client newClient = service.RegisterClient(model);
             Response.Cookies.Append("jwt", jwtService.Generate(newClient.Id), new CookieOptions{HttpOnly = true});
-            return Ok("success");
+            return Ok(newClient);
         }
         [HttpPost("login")]
         public ActionResult<string> LoginClient(LoginClientDTO model)
@@ -39,7 +39,7 @@ namespace FoodDeliveryApi.Controllers
             else 
             {
                 Response.Cookies.Append("jwt", jwtService.Generate(currentClient.Id), new CookieOptions{HttpOnly = true});
-                return Ok("success");
+                return Ok("currentClient");
             }
             
         }
