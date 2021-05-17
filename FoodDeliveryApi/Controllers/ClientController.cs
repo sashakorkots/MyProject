@@ -49,12 +49,12 @@ namespace FoodDeliveryApi.Controllers
             {
                 string jwt = Request.Cookies["jwt"];
                 JwtSecurityToken token = jwtService.Verify(jwt);
-                Client currentClient = service.GetById(Convert.ToInt32(token.Issuer));
+                int clientId = int.Parse(token.Issuer);
+                Client currentClient = service.GetById(clientId);
                 return Ok(currentClient);
             }
-            catch (System.Exception)
+            catch (Exception )
             {
-                
                 return Unauthorized();
             }
             

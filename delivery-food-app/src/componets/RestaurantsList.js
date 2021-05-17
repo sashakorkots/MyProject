@@ -15,8 +15,8 @@ function RestaurantsList() {
     return (
         <div id='restaurants'>
             {
-                restaurants.map(r => 
-                    <NavLink to={`/restaurant/${r.id}`}>
+                restaurants.map((r,i) => 
+                    <NavLink key={i} to={`/restaurant/${r.id}`}>
                         <Restaurant key={r.id} restaurant={r} />
                     </NavLink>)
             }

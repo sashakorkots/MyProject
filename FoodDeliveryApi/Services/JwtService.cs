@@ -7,14 +7,14 @@ namespace FoodDeliveryApi
 {
     public class JwtService
     {
-        private byte[] securityKey = Encoding.UTF8.GetBytes("very security key");
+        private string securityKey = "very security key";
 
         public string Generate(int id)
         {
-            SymmetricSecurityKey symmetricKey = new SymmetricSecurityKey(securityKey);
+            SymmetricSecurityKey symmetricKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
             SigningCredentials credentials = new SigningCredentials(symmetricKey, SecurityAlgorithms.HmacSha256Signature);
             JwtHeader header = new JwtHeader(credentials);
-            JwtPayload payload = new JwtPayload(id.ToString(), null, null,new DateTime(),new DateTime().AddHours(5));
+            JwtPayload payload = new JwtPayload(id.ToString(), null, null, null, DateTime.Today.AddDays(1));
             JwtSecurityToken token = new JwtSecurityToken(header, payload);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -22,9 +22,10 @@ namespace FoodDeliveryApi
         public JwtSecurityToken Verify(string jwt)
         {
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-
-            tokenHandler.ValidateToken(jwt, new TokenValidationParameters{
-                IssuerSigningKey = new SymmetricSecurityKey(securityKey),
+            byte[] key = Encoding.ASCII.GetBytes(securityKey);
+            tokenHandler.ValidateToken(jwt, new TokenValidationParameters
+            {
+                IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuerSigningKey = true,
                 ValidateIssuer = false,
                 ValidateAudience = false
