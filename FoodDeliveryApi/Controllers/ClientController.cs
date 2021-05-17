@@ -39,7 +39,7 @@ namespace FoodDeliveryApi.Controllers
             else 
             {
                 Response.Cookies.Append("jwt", jwtService.Generate(currentClient.Id), new CookieOptions{HttpOnly = true});
-                return Ok("currentClient");
+                return Ok(currentClient);
             }
             
         }
@@ -66,6 +66,12 @@ namespace FoodDeliveryApi.Controllers
         {
             Response.Cookies.Delete("jwt");
             return Ok("success");
+        }
+        
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<Client>> GetClients()
+        {
+            return service.GetAllClients();
         }
         
         
