@@ -16,7 +16,7 @@ const clientSlice = createSlice({
                 state.name = name
                 state.surname = surname
                 state.email = email
-                state.order = order
+                state.order = order == null ? [] : order
             }
         }
 })

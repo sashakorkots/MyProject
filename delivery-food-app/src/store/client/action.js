@@ -10,8 +10,7 @@ export const CreateClient = (client) => (dispatch) => {
 }
 
 export const LoadClient = (loginInfo) => (dispatch) => {
-    axios.post(`${clientUrl}login`, loginInfo, {withCredentials : true})
-        .then(Redirect('home')) 
+    axios.post(`${clientUrl}login`, loginInfo, {withCredentials : true})         
         .then(console.log) 
 }
 

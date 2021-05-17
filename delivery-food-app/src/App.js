@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { loadRestaurant } from './store/restaurant/actions';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import RestaurantsList from './componets/RestaurantsList';
 import Menu from './componets/Menu'
@@ -13,15 +13,15 @@ import Login from './componets/Login'
 
 function App() {
   const dispatch = useDispatch()
-
+  const client = useSelector(state => state.currentClient)
   useEffect(() => {
     dispatch(loadRestaurant())
   },[dispatch])
 
   return (
     <div className="App">
+
       <BrowserRouter>
-        <Switch>
           <Route path="/register">
             <h2>Register</h2>
             <Register />
@@ -38,8 +38,7 @@ function App() {
               <Backet />
             </div>
             <Link to={`/home`} className='link-back'><button>Повернутися до вибору ресторану</button></Link>
-          </Route>
-        </Switch>
+          </Route>        
       </BrowserRouter>
     </div>
   );
