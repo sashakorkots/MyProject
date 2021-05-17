@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router";
 import { LoadClient } from '../store/client/action'
+import {toRestaurant} from '../store/path/pathSlice'
 
 function useForm(...fields) {
     return {
@@ -29,10 +31,12 @@ function Login() {
     const fields = useForm(fieldEmail, fieldPassword)
 
     const dispatch = useDispatch()
-
+    const path = useSelector(state => state.path.path)
+    
     const onSubmitHandler = (event) => {
         event.preventDefault()
         dispatch(LoadClient(fields.buildObject()))
+        dispatch(toRestaurant())
     }
 
     return (
@@ -42,6 +46,7 @@ function Login() {
                 <input {...fieldPassword} />
             </p>
             <button type='submit'>login</button>
+            <Redirect to={path} /> 
         </form>
     )
 }

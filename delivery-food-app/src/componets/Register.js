@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CreateClient } from '../store/client/action'
+import { Redirect } from 'react-router';
 
 function useForm(...fields) {
     return {
@@ -35,6 +36,7 @@ function Register() {
     const onSubmitHandler = (event) => {
         event.preventDefault()
         dispatch(CreateClient(fields.buildObject()))
+        fields.cleanAll()
     }
 
     return (
@@ -46,6 +48,7 @@ function Register() {
                 <input {...fieldPassword} />
             </p>
             <button type='submit'>register</button>
+            
         </form>
     )
 }

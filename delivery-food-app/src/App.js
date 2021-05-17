@@ -13,20 +13,21 @@ import Login from './componets/Login'
 
 function App() {
   const dispatch = useDispatch()
-  const client = useSelector(state => state.currentClient)
+    
   useEffect(() => {
     dispatch(loadRestaurant())
   },[dispatch])
 
   return (
     <div className="App">
-
-      <BrowserRouter>
+      
+      <BrowserRouter >                    
           <Route path="/register">
             <h2>Register</h2>
             <Register />
             <h2>Login</h2>
             <Login />
+            
           </Route>
           <Route path="/home">
             <h2>Restaurants</h2>
