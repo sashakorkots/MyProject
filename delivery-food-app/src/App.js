@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import RestaurantsList from './componets/RestaurantsList';
 import Menu from './componets/Menu'
 import Backet from './componets/BasketList'
-import {deleteOrder} from './store/order/orderSlice'
+import Register from './componets/Register' 
 
 
 function App() {
@@ -20,6 +20,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <Route path="/register">
+            <h2>Register</h2>
+            <Register />
+          </Route>
           <Route path="/home">
             <h2>Restaurants</h2>
             <RestaurantsList />
