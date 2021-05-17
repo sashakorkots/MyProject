@@ -29,7 +29,7 @@ namespace FoodDeliveryApi.Controllers
             return Ok(newClient);
         }
         [HttpPost("login")]
-        public ActionResult<string> LoginClient(LoginClientDTO model)
+        public ActionResult<Client> LoginClient(LoginClientDTO model)
         {
             Client currentClient = service.FindByEmail(model.Email);
             if (currentClient == null || !service.CheckPassword(model.Password, currentClient))

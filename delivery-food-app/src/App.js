@@ -7,6 +7,7 @@ import RestaurantsList from './componets/RestaurantsList';
 import Menu from './componets/Menu'
 import Backet from './componets/BasketList'
 import Register from './componets/Register' 
+import Login from './componets/Login'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/register">
             <h2>Register</h2>
             <Register />
+            <Login />
           </Route>
           <Route path="/home">
             <h2>Restaurants</h2>

@@ -4,10 +4,10 @@ import {clientUrl} from '../url'
 
 export const CreateClient = (client) => (dispatch) => {
     axios.post(`${clientUrl}register`,client)
-        .then(cl => dispatch(RegisterClient(cl)))
+        .then(cl => dispatch(RegisterClient(cl.data)))
 }
 
 export const LoadClient = (loginInfo) => (dispatch) => {
-    axios.get(`${clientUrl}`, loginInfo)
-        .then(cl => dispatch(LoginClient(cl)))
+    axios.post(`${clientUrl}login`, loginInfo)
+        .then(cl => dispatch(LoginClient(cl.data)))
 }

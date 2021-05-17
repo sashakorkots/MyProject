@@ -85,3 +85,8 @@ h2 {
 .counter {
   float: right;
 }
+
+#register>p>* {
+  display: block;
+  margin-bottom: 5px;
+}
